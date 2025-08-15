@@ -3,94 +3,527 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Merz Park Initiative</title>
-  <meta name="description" content="A community proposal to preserve the legacy of Camp Merz on Chautauqua Lake by creating Merz Park—dedicated to families and youth.">
+  <title>Save Merz Park — Honor the Gift, Secure the Legacy</title>
+  <meta name="description" content="Camp Merz has closed for the first time in decades. We must act now to transform it into Merz Park—a public space for families and youth in Chautauqua County.">
   <style>
 :root{
-  --bg:#0b1220; --card:#0f172a; --muted:#94a3b8; --text:#e5e7eb; --brand:#10b981; --accent:#f59e0b;
+  --bg:#e6f3ff; --card:#ffffff; --muted:#64748b; --text:#1e293b; --brand:#166534; --accent:#1d4ed8; --urgent:#dc2626;
+  --shadow: 0 10px 25px rgba(0,0,0,0.1); --shadow-lg: 0 20px 40px rgba(0,0,0,0.15);
 }
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);}
-a{color:inherit}
-.container{max-width:1100px;margin:0 auto;padding:24px}
-.hero{background:linear-gradient(180deg, rgba(16,185,129,0.15), rgba(15,23,42,0.6));border-bottom:1px solid #1f2937}
-.hero .inner{backdrop-filter:saturate(140%) blur(1px);padding:72px 24px}
-.badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.6);color:#d1fae5;font-weight:600;letter-spacing:.02em}
-h1{font-size:clamp(32px,4.5vw,52px);line-height:1.05;margin:12px 0 8px}
-.lead{font-size:clamp(16px,2.2vw,20px);color:#d1d5db;max-width:60ch}
-.btns{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
-.button{appearance:none;border:none;background:var(--brand);color:#052e23;padding:12px 18px;border-radius:10px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
-.button.secondary{background:transparent;border:1px solid #334155;color:#e2e8f0}
-.section{padding:48px 0;border-bottom:1px solid #1f2937;background:linear-gradient(0deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0))}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:18px}
-.card{background:var(--card);border:1px solid #1f2937;border-radius:14px;padding:18px}
-.card h3{margin:0 0 8px}
-.figure{display:grid;grid-template-columns:1fr;gap:14px}
-.figure img{width:100%;border-radius:12px;border:1px solid #1f2937}
-blockquote{margin:0;padding:16px;border-left:4px solid var(--accent);background:#111827;border-radius:6px}
-footer{padding:36px 24px;color:#9ca3af;font-size:14px}
-small.muted{color:var(--muted)}
-.accent-band{background:linear-gradient(90deg, rgba(16,185,129,0.12), rgba(245,158,11,0.08));border-top:1px solid #1f2937;border-bottom:1px solid #1f2937}
-.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px}
-.button.link{background:transparent;border:1px solid #334155;color:#e2e8f0;text-decoration:none}
-.player-embed{max-width:760px;border:1px solid #1f2937;border-radius:12px;overflow:hidden;background:#0b1220}
-.player-embed iframe{display:block;width:100%;height:166px;border:0}
-.downloads{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
-.note{color:#cbd5e1;font-size:14px}
-.overlaid-closed {
-  position: relative;
-  display: inline-block;
-  max-width: 100%;
-  border-radius: 14px;
-  overflow: hidden;
-  border: 1px solid #334155;
+html{scroll-behavior:smooth}
+html,body{margin:0;padding:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+a{color:inherit;text-decoration:none}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.hero{
+  background: linear-gradient(135deg, rgba(22,101,52,0.3), rgba(29,78,216,0.2));
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
 }
-.overlaid-closed img {
-  display: block;
-  max-width: 100%;
-  height: auto;
+.hero::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  background:linear-gradient(45deg, rgba(240,249,255,0.3), rgba(240,249,255,0.1));
+  z-index:1;
 }
-.overlaid-closed::after {
-  content: "⛔";
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 120px;
-  color: rgba(255, 0, 0, 0.6);
-  pointer-events: none;
+.hero .inner{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  padding:120px 24px;
+  max-width:900px;
+  margin:0 auto;
+}
+.urgent-badge{
+  display:inline-block;
+  padding:12px 24px;
+  border-radius:50px;
+  background:linear-gradient(45deg, var(--brand), var(--accent));
+  color:white;
+  font-weight:700;
+  font-size:14px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin-bottom:24px;
+  box-shadow:var(--shadow);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.05)}
+}
+h1{
+  font-size:clamp(48px,8vw,96px);
+  line-height:0.9;
+  margin:24px 0;
+  font-weight:900;
+  text-shadow:0 2px 10px rgba(0,0,0,0.3);
+  background:linear-gradient(45deg, var(--brand), var(--accent));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-subtitle{
+  font-size:clamp(20px,3vw,32px);
+  color:#1e293b;
+  max-width:800px;
+  margin:0 auto 48px;
+  font-weight:300;
+  text-shadow:0 1px 5px rgba(255,255,255,0.8);
+}
+.cta-buttons{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:48px;
+}
+.button{
+  appearance:none;
+  border:none;
+  padding:18px 36px;
+  border-radius:50px;
+  font-weight:700;
+  font-size:18px;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  transition:all 0.3s ease;
+  box-shadow:var(--shadow);
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+}
+.button.primary{
+  background:linear-gradient(45deg, var(--brand), #ff8c42);
+  color:white;
+}
+.button.primary:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-lg);
+  background:linear-gradient(45deg, #ff8c42, var(--brand));
+}
+.button.secondary{
+  background:transparent;
+  border:3px solid var(--accent);
+  color:var(--accent);
+}
+.button.secondary:hover{
+  background:var(--accent);
+  color:var(--bg);
+  transform:translateY(-3px);
+}
+.section{
+  padding:100px 0;
+  position:relative;
+}
+.section:nth-child(even){
+  background:linear-gradient(180deg, #ffffff, #f0f9ff);
+}
+.section-header{
+  text-align:center;
+  margin-bottom:80px;
+}
+.section-header h2{
+  font-size:clamp(36px,5vw,64px);
+  font-weight:800;
+  margin-bottom:24px;
+  background:linear-gradient(45deg, var(--text), var(--accent));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.section-header p{
+  font-size:clamp(18px,2.5vw,24px);
+  color:#475569;
+  max-width:800px;
+  margin:0 auto;
+}
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:32px;
+  margin-top:60px;
+}
+.card{
+  background:var(--card);
+  border:2px solid #e2e8f0;
+  border-radius:20px;
+  padding:40px 32px;
+  text-align:center;
+  transition:all 0.3s ease;
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+.card::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:6px;
+  background:linear-gradient(90deg, var(--brand), var(--accent), #f59e0b);
+}
+.card:hover{
+  transform:translateY(-10px);
+  box-shadow:var(--shadow-lg);
+  border-color:var(--accent);
+  border-width:3px;
+}
+.card h3{
+  font-size:28px;
+  font-weight:700;
+  margin-bottom:20px;
+  color:var(--accent);
+}
+.card p{
+  font-size:18px;
+  color:#475569;
+  line-height:1.6;
+}
+.figure{
+  margin:60px 0;
+  text-align:center;
+}
+.figure img{
+  width:100%;
+  max-width:800px;
+  border-radius:20px;
+  box-shadow:var(--shadow-lg);
+  transition:transform 0.3s ease;
+}
+.figure img:hover{
+  transform:scale(1.02);
+}
+.figure figcaption{
+  margin-top:16px;
+  color:#9ca3af;
+  font-style:italic;
+}
+blockquote{
+  margin:60px 0;
+  padding:40px;
+  border-left:6px solid var(--brand);
+  background:linear-gradient(135deg, #ffffff, #f8fafc);
+  border-radius:16px;
+  font-size:24px;
+  font-style:italic;
+  color:#334155;
+  box-shadow:var(--shadow);
+  position:relative;
+}
+blockquote::before{
+  content:'"';
+  font-size:80px;
+  color:var(--brand);
+  position:absolute;
+  top:-20px;
+  left:20px;
+  opacity:0.3;
+}
+.urgent-message{
+  background:linear-gradient(135deg, rgba(22,101,52,0.15), rgba(29,78,216,0.15), rgba(245,158,11,0.1));
+  border:3px solid var(--brand);
+  border-radius:20px;
+  padding:40px;
+  margin:60px 0;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.urgent-message::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(22,101,52,0.1)"/></svg>') repeat;
+  animation:float 20s infinite linear;
+}
+@keyframes float{
+  0%{transform:translateY(0px)}
+  50%{transform:translateY(-10px)}
+  100%{transform:translateY(0px)}
+}
+.urgent-message h3{
+  font-size:32px;
+  color:var(--brand);
+  margin-bottom:20px;
+  position:relative;
+  z-index:1;
+}
+.urgent-message p{
+  font-size:20px;
+  color:#334155;
+  position:relative;
+  z-index:1;
+}
+.player-section{
+  background:white;
+  border-radius:20px;
+  padding:40px;
+  margin:40px 0;
+  box-shadow:var(--shadow);
+  border:1px solid #e2e8f0;
+}
+.player-section h3{
+  font-size:28px;
+  color:var(--accent);
+  margin-bottom:24px;
+  text-align:center;
+}
+.player-embed{
+  background:#f8fafc;
+  border-radius:16px;
+  overflow:hidden;
+  margin-bottom:24px;
+  box-shadow:var(--shadow);
+  border:1px solid #e2e8f0;
+}
+.player-embed iframe{
+  display:block;
+  width:100%;
+  height:166px;
+  border:0;
+}
+.downloads{
+  display:flex;
+  gap:16px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.button.link{
+  background:transparent;
+  border:2px solid var(--accent);
+  color:var(--accent);
+  padding:12px 24px;
+  font-size:16px;
+}
+.button.link:hover{
+  background:var(--accent);
+  color:var(--bg);
+}
+.overlaid-closed{
+  position:relative;
+  display:inline-block;
+  max-width:100%;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:var(--shadow-lg);
+}
+.overlaid-closed img{
+  display:block;
+  max-width:100%;
+  height:auto;
+  filter:grayscale(30%) contrast(120%);
+}
+.overlaid-closed::after{
+  content:"CLOSED";
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%) rotate(-15deg);
+  font-size:clamp(48px,8vw,120px);
+  font-weight:900;
+  color:rgba(255,71,87,0.8);
+  text-shadow:0 4px 20px rgba(0,0,0,0.8);
+  pointer-events:none;
+  letter-spacing:4px;
+}
+.overlaid-closed::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  background:rgba(255,71,87,0.1);
+  pointer-events:none;
+}
+.support-form{
+  background:white;
+  border-radius:20px;
+  padding:60px 40px;
+  box-shadow:var(--shadow-lg);
+  border:2px solid var(--accent);
+}
+.support-form h2{
+  text-align:center;
+  font-size:48px;
+  color:var(--accent);
+  margin-bottom:40px;
+}
+.support-form p{
+  text-align:center;
+  font-size:20px;
+  color:#475569;
+  margin-bottom:40px;
+}
+.support-form iframe{
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+footer{
+  background:#f8fafc;
+  padding:60px 24px;
+  text-align:center;
+  border-top:1px solid #e2e8f0;
+}
+footer .container{
+  max-width:800px;
+}
+footer h3{
+  font-size:32px;
+  color:var(--accent);
+  margin-bottom:16px;
+}
+footer p{
+  font-size:18px;
+  color:#64748b;
+  margin-bottom:8px;
+}
+footer a{
+  color:var(--brand);
+  font-weight:600;
+}
+footer a:hover{
+  color:var(--accent);
+}
+.fade-in{
+  opacity:0;
+  transform:translateY(30px);
+  transition:all 0.8s ease;
+}
+.fade-in.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+@media (max-width:768px){
+  .cta-buttons{flex-direction:column;align-items:center}
+  .button{padding:16px 32px;font-size:16px}
+  .section{padding:60px 0}
+  .cards{grid-template-columns:1fr}
+  .downloads{flex-direction:column;align-items:center}
 }
   </style>
 </head>
 <body>
+    <div style="text-align:center; padding:40px 0; background:white;">
+    <img src="CAMP MERZ SIGN header pic.jpg" alt="Camp Merz Sign Header" style="max-width:100%; height:auto; border-radius:16px; box-shadow:var(--shadow);">
+  </div>
+
   <header class="hero">
     <div class="container inner">
-      <span class="badge">Community Proposal</span>
+      <div class="urgent-badge" style="background:linear-gradient(45deg, #166534, #1d4ed8, #f59e0b);">🌟 Community Opportunity</div>
       <h1>Merz Park Initiative</h1>
-      <p class="lead">If Camp Merz can no longer operate as a Boy Scout facility, let's honor Frank Merz’s original gift by transforming the property into <strong>Merz Park</strong>—a family-centered public space serving the youth of Chautauqua County.</p>
-      <div class="btns">
-        <a class="button" href="#support">Add Your Name in Support</a>
-        <a class="button secondary" href="#about-frank-merz">About Frank Merz</a>
+      <p class="hero-subtitle">Honor the Gift, Create the Future</p>
+      <p class="lead" style="font-size:20px;color:#334155;margin-bottom:40px;">
+        Camp Merz has been a beloved lakeside youth camp for generations—donated by Frank Merz for the children of Chautauqua County. Now we have an opportunity to honor his original intent by transforming this sacred land into <strong>Merz Park</strong>, a public space that serves ALL families and youth of our community.
+      </p>
+      <div class="cta-buttons">
+        <a class="button primary" href="#support" style="background:linear-gradient(45deg, #166534, #16a34a);">🌟 JOIN THE INITIATIVE</a>
+        <a class="button secondary" href="#story" style="border-color: #1d4ed8; color: #1d4ed8;">Learn Frank's Story</a>
       </div>
     </div>
   </header>
 
   <main>
+    <section id="urgency" class="section">
+      <div class="container">
+        <div class="urgent-message fade-in">
+          <h3>🌟 A Community Opportunity</h3>
+          <p>Camp Merz was Frank Merz's gift to the youth of Chautauqua County—a place where generations learned to swim, camp, and build character. Now we have the chance to honor his original intent by creating a public park that serves ALL families and children in our community.</p>
+        </div>
+        
+        <div class="image-gallery fade-in" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:24px; margin:60px 0;">
+          <div class="image-card" style="background:white; border-radius:16px; overflow:hidden; box-shadow:var(--shadow); border:2px solid var(--brand);">
+            <img src="CAMP MERZ SIGN.jpeg" alt="Camp Merz Sign" style="width:100%; height:200px; object-fit:cover;">
+            <div style="padding:20px;">
+              <h4 style="color:var(--brand); margin:0 0 8px;">Camp Merz</h4>
+              <p style="color:#64748b; margin:0; font-size:14px;">The beloved lakeside camp that has served generations</p>
+            </div>
+          </div>
+          <div class="image-card" style="background:white; border-radius:16px; overflow:hidden; box-shadow:var(--shadow); border:2px solid var(--brand);">
+            <img src="CAMP MERZ.jpeg" alt="Camp Merz Grounds" style="width:100%; height:200px; object-fit:cover;">
+            <div style="padding:20px;">
+              <h4 style="color:var(--brand); margin:0 0 8px;">Camp Merz Grounds</h4>
+              <p style="color:#64748b; margin:0; font-size:14px;">The beautiful lakeside setting with unlimited potential</p>
+            </div>
+          </div>
+          <div class="image-card" style="background:white; border-radius:16px; overflow:hidden; box-shadow:var(--shadow); border:2px solid var(--accent);">
+            <img src="MILLER BELL TOWER.jpeg" alt="Miller Bell Tower" style="width:100%; height:200px; object-fit:cover;">
+            <div style="padding:20px;">
+              <h4 style="color:var(--accent); margin:0 0 8px;">🏛️ Miller Bell Tower</h4>
+              <p style="color:#64748b; margin:0; font-size:14px;">A beloved landmark representing community spirit</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="status-2025" class="section" style="background:linear-gradient(90deg, rgba(22,101,52,0.15), rgba(29,78,216,0.12), rgba(245,158,11,0.08));border-top:2px solid var(--brand);border-bottom:2px solid var(--accent)">
+      <div class="container">
+        <div class="section-header fade-in">
+          <h2>Current Status — 2025 Update</h2>
+          <p>Understanding the current situation and the opportunity to honor Frank Merz's original intent.</p>
+        </div>
+        
+        <div class="urgent-message fade-in">
+          <h3>🌟 Opportunity for Community Use</h3>
+          <p><strong>Resident summer camp at Camp Merz did not operate in 2025.</strong> The camp's official page lists all 2025 sessions as <em>"All sessions cancelled."</em> This creates an opportunity to ensure the land continues to serve local youth as Frank Merz intended. <a href="https://www.campmerz.org/" target="_blank" rel="noopener" style="color:var(--accent); font-weight:700;">Source</a>.</p>
+        </div>
+
+        <div class="cards">
+          <div class="card fade-in">
+            <h3>📰 Local Reporting</h3>
+            <p>AHC told families it had "made the difficult decision not to operate our summer camp in 2025." The Post‑Journal/Observer Today summarized the letter and reported Camp Merz closed its operations for the summer (resident camp). The article also says the council planned to use the property for short‑term rental (Airbnb) during the shuttering. <a href="https://www.observertoday.com/news/local-region/2025/07/more-area-camp-locations-decide-to-shutter-operations/" target="_blank" rel="noopener" style="color:var(--accent);">Source</a>.</p>
+          </div>
+          <div class="card fade-in">
+            <h3>🏕️ Short‑term Use Continues</h3>
+            <p><strong>Short‑term use continues:</strong> The council's reservation portal and facility pages still show the property available for <em>short‑term/unit reservations</em> during the year. <a href="https://www.alleghenyhighlands.org/camping" target="_blank" rel="noopener" style="color:var(--accent);">Source</a>, <a href="https://campreservation.com/382/Camps/27" target="_blank" rel="noopener" style="color:var(--accent);">Source</a>.</p>
+          </div>
+          <div class="card fade-in">
+            <h3>🌊 Broader Regional Trends</h3>
+            <p>The same coverage attributes closures at multiple area camps to cost‑saving measures and post‑COVID headwinds: lower enrollment, extended school calendars, lingering health concerns, screen‑time habits, weather, and staffing/international camper declines. These regional trends create opportunities for communities to reimagine how these valuable properties can serve local families.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="vision" class="section">
       <div class="container">
-        <h2>The Vision</h2>
-        <p>Our goal is simple and positive: preserve the land and access on Chautauqua Lake for community use. If the Boy Scouts are unable to operate a camp here, the property should continue to benefit local families and young people—just as its donor intended. We propose establishing <strong>Merz Park</strong>, operated in partnership with local stakeholders to provide year-round access for outdoor programs, youth activities, and community events.</p>
+        <div class="section-header fade-in">
+          <h2>Our Vision for Merz Park</h2>
+          <p>We believe in honoring Frank Merz's original intent. Our mission is to transform this sacred land into a public park that serves ALL families and youth of Chautauqua County—just as Frank intended.</p>
+        </div>
         <div class="cards">
-          <div class="card">
-            <h3>Preserve Public Access</h3>
-            <p>Protect the shoreline and grounds for educational programs, camping, paddling, and nature exploration.</p>
+          <div class="card fade-in">
+            <h3>🏞️ Preserve Public Access</h3>
+            <p>Protect the pristine shoreline and 100+ acres of forest for educational programs, camping, paddling, and nature exploration. This land belongs to the community.</p>
           </div>
-          <div class="card">
-            <h3>Serve All Youth</h3>
-            <p>Design programs that welcome boys and girls, families, and schools across Chautauqua County.</p>
+          <div class="card fade-in">
+            <h3>👨‍👩‍👧‍👦 Serve All Youth</h3>
+            <p>Create inclusive programs that welcome boys and girls, families, schools, and organizations across Chautauqua County. No child should be turned away.</p>
           </div>
-          <div class="card">
-            <h3>Honor the Gift</h3>
-            <p>Keep faith with Frank Merz’s original intent: a place dedicated to the growth and well-being of local youth.</p>
+          <div class="card fade-in">
+            <h3>🙏 Honor the Gift</h3>
+            <p>Keep faith with Frank Merz's original intent: a place dedicated to the growth, learning, and well-being of local youth. His legacy must live on.</p>
+          </div>
+        </div>
+        
+        <div class="image-gallery fade-in" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap:32px; margin:60px 0;">
+          <div class="image-card" style="background:white; border-radius:16px; overflow:hidden; box-shadow:var(--shadow); border:3px solid var(--accent);">
+            <img src="SUNSET ON THE LAKE.jpeg" alt="Sunset on Chautauqua Lake" style="width:100%; height:200px; object-fit:cover;">
+            <div style="padding:24px;">
+              <h4 style="color:var(--accent); margin:0 0 12px;">🏞️ Chautauqua Lake</h4>
+              <p style="color:#64748b; margin:0; line-height:1.5;">The historic Chautauqua Lake that has graced our region for generations, symbolizing the rich heritage and recreational opportunities this beautiful lake offers to families.</p>
+            </div>
+          </div>
+          <div class="image-card" style="background:white; border-radius:16px; overflow:hidden; box-shadow:var(--shadow); border:3px solid var(--brand);">
+            <img src="CHAUTAUQUA BELL STEAMBOAT.jpeg" alt="Chautauqua Bell Steamboat" style="width:100%; height:200px; object-fit:cover;">
+            <div style="padding:24px;">
+              <h4 style="color:var(--brand); margin:0 0 12px;">🚢 Chautauqua Bell Steamboat</h4>
+              <p style="color:#64748b; margin:0; line-height:1.5;">A beloved historic steamboat that represents the community spirit and cultural heritage of Chautauqua County, just like the potential of Merz Park.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -98,88 +531,220 @@ small.muted{color:var(--muted)}
 
     <section id="story" class="section">
       <div class="container">
-        <h2>A Legacy Rooted in Chautauqua County</h2>
-        <p>Frank Merz (1857–1939) rose from humble beginnings to become a respected Jamestown banker. He founded the Union Trust Company in 1893 and later served as chairman of the board. He believed in opportunity for young people and supported the creation of a lakeside camp so local youth could learn, lead, and thrive outdoors.</p>
-        <blockquote>
-          “The land was a gift for the youth of this community. Let’s make sure it stays that way.”
+        <div class="section-header fade-in">
+          <h2>The Man Behind the Legacy</h2>
+          <p>Frank Merz's story is the story of Chautauqua County itself—a tale of humble beginnings, hard work, and deep commitment to community.</p>
+        </div>
+        
+        <div style="text-align:center; margin:40px 0;">
+          <img src="https://drive.google.com/thumbnail?id=1S4YlhCqpxV0gPh0o8KWPEr8r8-3bThoO&sz=w600" alt="Portrait of Frank Merz" style="max-width:300px; height:auto; border-radius:16px; box-shadow:var(--shadow); border:3px solid var(--brand);">
+        </div>
+        
+        <p style="font-size:20px;color:#475569;margin-bottom:40px;">
+          Frank Merz (1857–1939) rose from humble beginnings to become one of Jamestown's most respected bankers and community leaders. He founded the Union Trust Company in 1893 and served as chairman of the board, but his greatest legacy was his belief in opportunity for young people. When he donated the land for Camp Merz, he envisioned a place where local youth could learn leadership, build character, and develop a love for the outdoors that would last a lifetime.
+        </p>
+        <blockquote class="fade-in">
+          "The land was a gift for the youth of this community. Let's make sure it stays that way."
         </blockquote>
       </div>
     </section>
 
     <section id="camp-merz" class="section">
       <div class="container">
-        <h2>Camp Merz and Chautauqua Lake</h2>
-        <p>For generations, Camp Merz has been a place where friendships were formed, skills were learned, and a love of the outdoors was passed from one generation to the next.</p>
-        <p>Situated just outside Mayville, NY — at the heart of Chautauqua County — the camp has deep ties to Jamestown, Chautauqua Lake, and the broader region. Many alumni remember summers of camping, canoeing, campfires, and community.</p>
-        <div class="overlaid-closed">
-          <img src="https://drive.google.com/uc?export=view&id=1sThqN50aVjyGhFhJc9AeuAWVafgn74A4" alt="Camp Merz Banner - Closed">
+        <div class="section-header fade-in">
+          <h2>Camp Merz: A Place of Memories</h2>
+          <p>For generations, this lakeside haven has been where friendships were forged, skills were learned, and the love of Chautauqua Lake was passed from one generation to the next.</p>
+        </div>
+        <p style="font-size:20px;color:#475569;margin-bottom:40px;">
+          Situated just outside Mayville, NY—at the heart of Chautauqua County—Camp Merz has deep ties to Jamestown, Chautauqua Lake, and the broader region. Countless alumni remember summers filled with camping, canoeing, campfires, and community. The camp's closure represents not just the loss of a facility, but the potential loss of a sacred space that has shaped thousands of lives.
+        </p>
+        <div class="overlaid-closed fade-in">
+          <img src="https://drive.google.com/thumbnail?id=1sThqN50aVjyGhFhJc9AeuAWVafgn74A4&sz=w1200" alt="Camp Merz - Now Closed">
         </div>
       </div>
     </section>
 
-    <section id="heavens-lake" class="section accent-band">
+    <section id="history" class="section">
       <div class="container">
-        <h2>Heaven’s Lake — A Personal Connection</h2>
-        <p>Chautauqua Lake has been part of our family story for generations. After my mother passed, we honored her wishes by returning her to these waters. The song “Heaven’s Lake” celebrates these memories and underscores why this land deserves to remain for our community's youth.</p>
-        <h3>🎵 Listen to “Heaven’s Lake”</h3>
+        <div class="section-header fade-in">
+          <h2>History & Timeline of Camp Merz</h2>
+          <p>Nearly a century of service to Chautauqua County's youth—from Frank Merz's original gift to today's urgent need to preserve this legacy.</p>
+        </div>
+        
+        <div class="urgent-message fade-in">
+          <h3>📅 90+ Years of History at Risk</h3>
+          <p><strong>Camp Merz</strong> sits just south of Mayville on Chautauqua Lake. The property was acquired in the early 1930s through the generosity of Jamestown banker <strong>Frank Merz</strong> and has hosted generations of local youth for waterfront and outdoor programs. <a href="https://www.post-journal.com/news/community/2023/07/camp-marks-90-years/" target="_blank" rel="noopener" style="color:var(--accent);">Source</a>, <a href="https://campreservation.com/382/Camps/27" target="_blank" rel="noopener" style="color:var(--accent);">Source</a>.</p>
+        </div>
 
-        <div class="player-embed" style="margin-bottom:8px;">
-          <strong>Country (Male Singer)</strong>
-          <iframe scrolling="no" allow="autoplay"
-            src="https://w.soundcloud.com/player/?url=https%3A//on.soundcloud.com/6UG959y0Bjv50zlzDA&color=%2310b981"></iframe>
-          <div class="downloads">
-            <a class="button link" href="https://drive.google.com/file/d/1dnJuTm40-loWU5olX6mDaGFBAAFyErnb/view?usp=drivesdk" target="_blank">Download MP3 — Country Male Vocal</a>
+        <div class="timeline-container fade-in" style="background:white; border-radius:20px; padding:40px; margin:40px 0; box-shadow:var(--shadow); border:1px solid #e2e8f0;">
+          <ul style="list-style:none; padding:0; margin:0;">
+            <li style="margin-bottom:24px; padding-left:20px; border-left:4px solid var(--brand); position:relative;">
+              <div style="background:var(--urgent); color:white; padding:4px 12px; border-radius:20px; font-size:14px; font-weight:700; display:inline-block; margin-bottom:8px;">1932</div>
+              <p style="font-size:18px; color:#475569; margin:0;">County historian records note: "Camp Merz was donated to the Boy Scouts." <a href="https://chautauquacountyny.gov/county-historian/news/week-chautauqua-county-history-june-22-28" target="_blank" rel="noopener" style="color:var(--accent);">Source</a>.</p>
+            </li>
+            <li style="margin-bottom:24px; padding-left:20px; border-left:4px solid var(--brand); position:relative;">
+              <div style="background:var(--brand); color:white; padding:4px 12px; border-radius:20px; font-size:14px; font-weight:700; display:inline-block; margin-bottom:8px;">1933</div>
+              <p style="font-size:18px; color:#475569; margin:0;">Property purchased for the Boy Scouts through a donation by Frank Merz. <a href="https://www.post-journal.com/news/community/2023/07/camp-marks-90-years/" target="_blank" rel="noopener" style="color:var(--accent);">Source</a>.</p>
+            </li>
+            <li style="margin-bottom:24px; padding-left:20px; border-left:4px solid var(--brand); position:relative;">
+              <div style="background:var(--accent); color:var(--bg); padding:4px 12px; border-radius:20px; font-size:14px; font-weight:700; display:inline-block; margin-bottom:8px;">1935</div>
+              <p style="font-size:18px; color:#475569; margin:0;">Camp Merz opens for scouts (first mid‑1930s seasons reported). <a href="https://www.findagrave.com/memorial/51248913/frank-merz" target="_blank" rel="noopener" style="color:var(--accent);">Source</a>.</p>
+            </li>
+            <li style="margin-bottom:24px; padding-left:20px; border-left:4px solid var(--brand); position:relative;">
+              <div style="background:#6b7280; color:white; padding:4px 12px; border-radius:20px; font-size:14px; font-weight:700; display:inline-block; margin-bottom:8px;">1950s–2010s</div>
+              <p style="font-size:18px; color:#475569; margin:0;">Camp builds a regional reputation for aquatics and outdoor skills on a large lakefront site. Current descriptions cite ~350 acres and 1,500 feet of private waterfront. <a href="https://campreservation.com/382/Camps/27" target="_blank" rel="noopener" style="color:var(--accent);">Source</a>.</p>
+            </li>
+            <li style="margin-bottom:24px; padding-left:20px; border-left:4px solid var(--brand); position:relative;">
+              <div style="background:#6b7280; color:white; padding:4px 12px; border-radius:20px; font-size:14px; font-weight:700; display:inline-block; margin-bottom:8px;">2020</div>
+              <p style="font-size:18px; color:#475569; margin:0;">The Allegheny Highlands Council (AHC) suspended in‑person summer camps due to the COVID‑19 pandemic.</p>
+            </li>
+            <li style="margin-bottom:24px; padding-left:20px; border-left:4px solid var(--brand); position:relative;">
+              <div style="background:#6b7280; color:white; padding:4px 12px; border-radius:20px; font-size:14px; font-weight:700; display:inline-block; margin-bottom:8px;">2021</div>
+              <p style="font-size:18px; color:#475569; margin:0;">To address financial pressure from the national BSA bankruptcy, AHC voted to sell Elk Lick Scout Reserve in PA (Camp Merz remained).</p>
+            </li>
+            <li style="margin-bottom:24px; padding-left:20px; border-left:4px solid var(--brand); position:relative;">
+              <div style="background:var(--accent); color:var(--bg); padding:4px 12px; border-radius:20px; font-size:14px; font-weight:700; display:inline-block; margin-bottom:8px;">2023</div>
+              <p style="font-size:18px; color:#475569; margin:0;">Community marks ~90 years of Camp Merz; local coverage highlights the Merz gift and ongoing programs. <a href="https://www.post-journal.com/news/community/2023/07/camp-marks-90-years/" target="_blank" rel="noopener" style="color:var(--accent);">Source</a>.</p>
+            </li>
+            <li style="margin-bottom:24px; padding-left:20px; border-left:4px solid var(--urgent); position:relative;">
+              <div style="background:var(--urgent); color:white; padding:4px 12px; border-radius:20px; font-size:14px; font-weight:700; display:inline-block; margin-bottom:8px;">2025</div>
+              <p style="font-size:18px; color:#475569; margin:0;">Resident summer sessions at Camp Merz are <em>canceled</em> (Weeks of July 6, 13, 20 listed as "All sessions cancelled"). <a href="https://www.campmerz.org/" target="_blank" rel="noopener" style="color:var(--urgent); font-weight:700;">Source</a>.</p>
+            </li>
+          </ul>
+        </div>
+
+        <blockquote class="fade-in">
+          <em>About the donor:</em> Frank Merz (1857–1939) led the Union Trust Company in Jamestown and helped secure the lakeside property for youth camping. <a href="https://www.post-journal.com/news/community/2023/07/camp-marks-90-years/" target="_blank" rel="noopener" style="color:var(--accent);">Source</a>.
+        </blockquote>
+      </div>
+    </section>
+
+    <section id="heavens-lake" class="section">
+      <div class="container">
+        <div class="section-header fade-in">
+          <h2>Heaven's Lake — Our Family's Connection</h2>
+          <p>Chautauqua Lake has been part of our family story for generations. After my mother passed, we honored her wishes by returning her to these waters. The song "Heaven's Lake" celebrates these memories and underscores why this land deserves to remain for our community's youth.</p>
+          
+          <div style="text-align:center; margin:30px 0;">
+            <img src="WBS Signature cleanest-SMALL.gif" alt="Wm. Breck Seiniger, Jr. Signature" style="max-width:200px; height:auto;">
+            <p style="color:var(--brand); font-style:italic; margin:8px 0 0; font-size:16px;">Wm. Breck Seiniger, Jr. (a.k.a. "Hooley The Poet")</p>
+            <p style="color:#64748b; margin:4px 0 0; font-size:14px;">Great-grandson of Frank Merz</p>
           </div>
         </div>
 
-        <div class="player-embed" style="margin-bottom:8px;">
-          <strong>Bluegrass (Female Singers)</strong>
-          <iframe scrolling="no" allow="autoplay"
-            src="https://w.soundcloud.com/player/?url=https%3A//on.soundcloud.com/zDQsGiPagxcO1polqo&color=%2310b981"></iframe>
-          <div class="downloads">
-            <a class="button link" href="https://drive.google.com/file/d/1XLH31HDXamhYhiH5tfZ336Rwrmk9wPVx/view?usp=drivesdk" target="_blank">Download MP3 — Bluegrass Female Vocal</a>
-          </div>
+        <div class="player-section fade-in">
+          <h3>🎵 Listen to "Heaven's Lake"</h3>
+          <p style="text-align:center;color:#d1d5db;margin-bottom:32px;">Two beautiful versions of our tribute to Chautauqua Lake</p>
+
+                     <div class="player-embed">
+             <strong style="display:block;margin-bottom:16px;color:var(--accent);font-size:18px;">🎤 Country Version (Male Singer)</strong>
+             <iframe scrolling="no" allow="autoplay"
+               src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/hooley-the-poet/heavens-lake&color=%2310b981"></iframe>
+             <div class="downloads">
+               <a class="button link" href="https://drive.google.com/file/d/1dnJuTm40-loWU5olX6mDaGFBAAFyErnb/view?usp=drivesdk" target="_blank">📥 Download MP3 — Country Male Vocal</a>
+             </div>
+           </div>
+
+                     <div class="player-embed">
+             <strong style="display:block;margin-bottom:16px;color:var(--accent);font-size:18px;">🎻 Bluegrass Version (Female Singers)</strong>
+             <iframe scrolling="no" allow="autoplay"
+               src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/hooley-the-poet/heavens-lake-female-voice&color=%2310b981"></iframe>
+             <div class="downloads">
+               <a class="button link" href="https://drive.google.com/file/d/1XLH31HDXamhYhiH5tfZ336Rwrmk9wPVx/view?usp=drivesdk" target="_blank">📥 Download MP3 — Bluegrass Female Vocal</a>
+             </div>
+           </div>
         </div>
       </div>
     </section>
 
     <section id="about-frank-merz" class="section">
       <div class="container">
-        <h2>About Frank Merz</h2>
-
-        <div class="figure" style="margin-bottom:18px;">
-          <img src="https://drive.google.com/uc?export=view&id=1S4YlhCqpxV0gPh0o8KWPEr8r8-3bThoO" alt="Portrait of Frank Merz">
-          <figcaption>Frank Merz (1857–1939), respected banker and donor of Camp Merz.</figcaption>
+        <div class="section-header fade-in">
+          <h2>Frank Merz: A Life of Service</h2>
+          <p>From humble beginnings to community leadership, Frank Merz's story embodies the American dream and the spirit of Chautauqua County.</p>
         </div>
 
-        <div class="figure" style="margin-bottom:18px;">
-          <img src="https://drive.google.com/uc?export=view&id=1xV0HMLogeFGE4iG0V8ely2bq6EpKiiRw" alt="Merz family home in Jamestown, NY">
-          <figcaption>Merz family home, Jamestown, New York</figcaption>
+        <div class="figure fade-in">
+          <img src="https://drive.google.com/thumbnail?id=1S4YlhCqpxV0gPh0o8KWPEr8r8-3bThoO&sz=w1000" alt="Portrait of Frank Merz">
+          <figcaption>Frank Merz (1857–1939), respected banker and philanthropist who donated Camp Merz for the youth of Chautauqua County.</figcaption>
         </div>
 
-        <div class="figure" style="margin-bottom:18px;">
-          <img src="frank_merz_obituary_combined.jpg" alt="New York Times obituary for Frank Merz">
-          <figcaption>New York Times obituary headlines and text for Frank Merz, assembled from archival scans.</figcaption>
+        <div class="figure fade-in">
+          <img src="https://drive.google.com/thumbnail?id=1xV0HMLogeFGE4iG0V8ely2bq6EpKiiRw&sz=w1000" alt="Merz family home in Jamestown, NY">
+          <figcaption>The Merz family home in Jamestown, New York—a testament to Frank's success and commitment to his community.</figcaption>
         </div>
 
-        <p>Frank Merz rose from humble beginnings to become a community leader and philanthropist in Jamestown. His most lasting legacy is the gift of Camp Merz on Chautauqua Lake—a place dedicated to local youth, outdoor education, and the enduring spirit of civic generosity.</p>
+        <div class="figure fade-in">
+          <img src="CAMP MERZ SIGN.jpeg" alt="Camp Merz Sign">
+          <figcaption>The iconic Camp Merz sign—a symbol of the beloved lakeside camp that has served generations of youth.</figcaption>
+        </div>
+
+        <p style="font-size:20px;color:#475569;margin-top:40px;">
+          Frank Merz's legacy extends far beyond his banking career. His most lasting gift—Camp Merz on Chautauqua Lake—represents his deep belief in opportunity for young people and his commitment to the enduring spirit of civic generosity. We owe it to his memory to ensure this land continues to serve the youth of Chautauqua County.
+        </p>
+
+        <div class="urgent-message fade-in" style="margin-top:40px;">
+          <h3>🏛️ Cultural Legacy</h3>
+          <p>Frank's daughter, <strong>Elizabeth Butterfield Merz</strong>, was a prominent composer with ties to Chautauqua Institution. She won a national patriotic song competition and performed at the White House, further connecting the Merz family to the cultural heritage of Chautauqua County.</p>
+        </div>
       </div>
     </section>
 
     <section id="support" class="section">
       <div class="container">
-        <h2>Add Your Name in Support</h2>
-        <p>Stand with us to preserve this land for the youth and families of Chautauqua County!</p>
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSektiBtrxA7OnGGuFF3JsicOWsRrtFhMxjP11JN15-DLxvVMA/viewform?embedded=true" width="100%" height="1203" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        <div class="support-form fade-in">
+          <h2>🌟 Join the Merz Park Initiative</h2>
+          <p>Your voice matters. Add your name to show support for transforming Camp Merz into Merz Park—a public space that honors Frank's legacy and serves ALL families and youth of Chautauqua County.</p>
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSektiBtrxA7OnGGuFF3JsicOWsRrtFhMxjP11JN15-DLxvVMA/viewform?embedded=true" width="100%" height="1203" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="container">
-      <div>Merz Park Initiative — Chautauqua Lake, New York</div>
-      <div>Organizer: William Breck, Jr. — <a href="mailto:breck@seinigerlaw.com">breck@seinigerlaw.com</a></div>
+      <h3>Merz Park Initiative</h3>
+      <p>Chautauqua Lake, New York</p>
+      <p>Organizer: William Breck, Jr.</p>
+      <p><a href="mailto:breck@seinigerlaw.com">breck@seinigerlaw.com</a></p>
+      <p style="margin-top:16px;font-size:16px;color:#64748b;">
+        Together, we can honor Frank Merz's gift and ensure this sacred land continues to serve the youth and families of Chautauqua County for generations to come.
+      </p>
     </div>
   </footer>
+
+  <script>
+    // Fade-in animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
